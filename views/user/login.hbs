@@ -1,6 +1,10 @@
 <h2 class="text-center mt-5">Login</h2>
 <form style="width:22rem" class="mx-auto mt-3" action="/login" method="POST">
   <!-- Email input -->
+  {{#if loginErr}}
+  <p class="error">{{loginErr}}</p>
+
+  {{/if}}
   <div class="form-outline mb-4" >
     <label class="form-label" for="form2Example1">Email address</label>
     <input type="email" name="Email" class="form-control" />
