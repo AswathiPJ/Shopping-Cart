@@ -3,6 +3,13 @@ const session = require('express-session');
 const productHelper=require('../helpers/product-helpers');
 const userHelpers=require('../helpers/user-helpers')
 var router = express.Router();
+const verifyLogin=(req,res,next)=>{
+  if(req.session.loggedIn){
+    next()
+  }else{
+    res.redirect('/login')
+  }
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -49,5 +56,10 @@ router.get('/logout',(req,res)=>{
   req.session.destroy()
   res.redirect('/')
 })
+router.get('/cart',verifyLogin,(req,res)=>{
+  res.render('user/cart')
+})
+
+
 
 module.exports = router;

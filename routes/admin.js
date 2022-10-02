@@ -1,4 +1,5 @@
 var express = require('express');
+const productHelpers = require('../helpers/product-helpers');
 var router = express.Router();
 var productHelper=require('../helpers/product-helpers')
 
@@ -28,6 +29,16 @@ router.post('/add-product',function(req,res){
     })
     
   })
+})
+
+router.get('/delete-product/',(req,res)=>{
+  let proId=req.query.id
+  console.log(proId)
+  productHelpers.deleteProduct(proId).then((response)=>{
+    res.redirect('/admin/')
+
+  })
+
 })
 
 module.exports = router;
