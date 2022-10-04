@@ -73,8 +73,9 @@ module.exports = {
           db.get().collection(collection.CART_COLLECTION).updateOne({user:objectId(userId)},
           {
             $set:{
-              $push:{products:objectId(proId)}
-            }
+              
+            },
+            $push:{products:objectId(proId)}
           }).then((response)=>{
             resolve()
           })
